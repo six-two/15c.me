@@ -10,3 +10,4 @@ mv tmp build/view
 # move /build/view/root/* to /build/*
 mv build/view/root/* build
 rm -r build/view/root
+cp build/404.html build/index.html
