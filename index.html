@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>15c.me</title>
+</head>
+<body>
+	<h1>Shortcuts</h1>
+  <script src="https://15c.me/sc.js"></script>
+  <ul>
+  	<script type="text/javascript">
+      for (let name of listShortcuts()) {
+        url = getShortcut(name);
+        if (url) {
+          document.write(`<li><a href=${url}>${name}</a></li>`);
+        } else {
+          console.error(`No URL for shortcut '${name}'`)
+        }
+      }
+  	</script>
+  </ul>
+</body>
+</html>
