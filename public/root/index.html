@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Redirect link</title>
+</head>
+<body>
+	<script src="https://15c.me/view/sc.js"></script>
+	<script type="text/javascript">
+		let path = location.pathname.slice(1);
+		console.log(`Shortcut name: '${path}'`);
+		let url = getShortcut(path);
+		console.log(`Shortcut URL: '${url}'`);
+		if (url) {
+			document.write(`Redirecting to ${url}`);
+			location.href = url;
+		} else {
+			if (path) {
+				document.write('<h1>Shortcut does not exist</h1>');
+				document.write('Click <a href="/view/">here</a> for a list of valid shortcuts');
+			} else {
+				location.href = '/view/';
+			}
+		}
+	</script>
+</body>
+</html>
