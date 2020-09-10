@@ -2,14 +2,37 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Redirecting</title>
+	<title>Redirect link</title>
 </head>
 <body>
-	<h1>Redirecting...</h1>
-	If you are not being redirected please click <a href="/view/">here</a>!
-
 	<script type="text/javascript">
-		location.href = '/view/';
+		async function fetchShortcutData(url) {
+			try {
+				const response = await fetch(url);
+				return await response.json();
+			} catch (error) {
+				console.error(`Failed to fetch "${url}"`, error);
+				return {}
+			}
+		}
+
+		let path = location.pathname.slice(1);
+		console.log(`Shortcut name: '${path}'`);
+		fetchShortcutData('https://15c.me/sc.json').then(json => {
+			let url = json[path];
+			console.log(`Shortcut URL: '${url}'`);
+			if (url) {
+				document.write(`Redirecting to ${url}`);
+				location.href = url;
+			} else {
+				if (path) {
+					document.write('<h1>Shortcut does not exist</h1>');
+					document.write('Click <a href="/view/">here</a> for a list of valid shortcuts');
+				} else {
+					location.href = '/view/';
+				}
+			}
+		})
 	</script>
 </body>
 </html>
