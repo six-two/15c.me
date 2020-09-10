@@ -26,9 +26,11 @@
 				location.href = url;
 			} else {
 				if (path) {
+					// 404.html
 					document.write('<h1>Shortcut does not exist</h1>');
 					document.write('Click <a href="/view/">here</a> for a list of valid shortcuts');
 				} else {
+					// index.html
 					location.href = '/view/';
 				}
 			}

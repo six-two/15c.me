@@ -4,6 +4,6 @@
     "kali": "https://projects.six-two.dev/react_fake_kali_login/",
     "w10": "",
     "loop": "/eggs_are_good_for_you#this_will_trap_your_device_in_a_redirect_loop",
-    "eggs_are_good_for_you": "/eggs_are_bad_for_you",
+    "eggs_are_good_for_you": "eggs_are_bad_for_you",
     "eggs_are_bad_for_you": "eggs_are_good_for_you"
 }
