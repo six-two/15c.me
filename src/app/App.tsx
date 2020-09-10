@@ -2,6 +2,14 @@ import React, {useState, useEffect} from 'react';
 import '../css/main.scss';
 import Table from './Table';
 
+// --------------------------- TODOs -------------------------------
+// -----------------------------------------------------------------
+
+interface ShortcutData {
+  name: string,
+  url: string,
+}
+
 const columns = [
   {
     Header: 'Shortcut Name',
@@ -12,24 +20,6 @@ const columns = [
     accessor: 'url',
   },
 ];
-
-interface ShortcutData {
-  name: string,
-  url: string,
-}
-
-fetch('/sc.json')
-.then(function (response) {
-  // response.text().then(text => console.debug('sc.json:', text));//DBG
-  return response.json();
-})
-.then(function (json_data) {
-  console.debug('sc.json', json_data)
-  
-  })
-  .catch(function (err) {
-    
-  });
 
 async function fetchShortcutData(url: string): Promise<ShortcutData[]> {
   try {
@@ -45,9 +35,6 @@ async function fetchShortcutData(url: string): Promise<ShortcutData[]> {
     return [{name: 'ERROR', url: 'Failed to fetch the shortcut file'}];
   }
 }
-
-// --------------------------- TODOs -------------------------------
-// -----------------------------------------------------------------
 
 export default function App() {
   const [data, setData] = useState<ShortcutData[]>([{name: 'INFO', url: 'Loading data...'}]);

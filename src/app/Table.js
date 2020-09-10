@@ -1,9 +1,6 @@
 import React from 'react';
 import { useTable, useGlobalFilter, useAsyncDebounce } from 'react-table';
-// A great library for fuzzy filtering/sorting items
-import matchSorter from 'match-sorter';
 
-// Define a default UI for filtering
 function GlobalFilter({
   preGlobalFilteredRows,
   globalFilter,
@@ -29,14 +26,6 @@ function GlobalFilter({
     </div>
   )
 }
-
-
-function fuzzyTextFilterFn(rows, id, filterValue) {
-  return matchSorter(rows, filterValue, { keys: [row => row.values[id]] })
-}
-
-// Let the table remove the filter if the string is empty
-fuzzyTextFilterFn.autoRemove = val => !val
 
 function Table({ columns, data }) {
   const {
@@ -81,8 +70,9 @@ function Table({ columns, data }) {
             prepareRow(row)
             return (
               <tr {...row.getRowProps()}>
-                {row.cells.map(cell => {
-                  return <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
+                {row.cells.map((cell, j) => {
+                  const contents = (j === 1)? <a href={cell.value}>{cell.value}</a> : cell.render('Cell');
+                  return <td {...cell.getCellProps()}>{contents}</td>
                 })}
               </tr>
             )
