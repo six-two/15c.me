@@ -4,9 +4,9 @@
 cd "$( dirname "${BASH_SOURCE[0]}" )"
 
 # Start the app / do something else
-if [ "$1" == "deploy" ]
+if [ "$1" == "build" ]
 then
-  SKIP_PREFLIGHT_CHECK=true npm run deploy
+  SKIP_PREFLIGHT_CHECK=true npm run build
 else
   SKIP_PREFLIGHT_CHECK=true npm start
 fi
