@@ -1,5 +1,5 @@
 {
-  "homepage": "/view/",
+  "homepage": "./",
   "name": "15c_me",
   "version": "0.1.0",
   "private": true,
@@ -23,6 +23,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "postbuild": "rm tmp; mv build tmp && mkdir build && mv tmp build/view",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
