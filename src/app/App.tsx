@@ -4,7 +4,6 @@ import Table from './Table';
 
 // --------------------------- TODOs -------------------------------
 // Make it look good, fix overflow on phone
-// Make columns sortable?
 // Explain usage
 // make clicking a shortcut copy its url into your clipboard
 // -----------------------------------------------------------------
