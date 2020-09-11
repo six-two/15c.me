@@ -1,33 +1,14 @@
 import React from 'react';
-import { useTable, useGlobalFilter, useAsyncDebounce, useSortBy } from 'react-table';
+import { useTable, useGlobalFilter, useSortBy } from 'react-table';
+import GlobalFilter from './Search';
+import {ShortcutData} from './App';
 
-function GlobalFilter({
-  preGlobalFilteredRows,
-  globalFilter,
-  setGlobalFilter,
-}) {
-  // const count = preGlobalFilteredRows.length
-  const [value, setValue] = React.useState(globalFilter)
-  const onChange = useAsyncDebounce(value => {
-    setGlobalFilter(value || undefined)
-  }, 200)
-
-  return (
-    <div className="table-filter">
-      <span>Search:</span>
-      <input
-        value={value || ""}
-        onChange={e => {
-          setValue(e.target.value);
-          onChange(e.target.value);
-        }}
-        placeholder="Click here and type to search"
-      />
-    </div>
-  )
+interface Props {
+  columns: any[],
+  data: ShortcutData[],
 }
 
-function Table({ columns, data }) {
+function Table(props: Props) {
   const {
     getTableProps,
     getTableBodyProps,
@@ -35,30 +16,28 @@ function Table({ columns, data }) {
     rows,
     prepareRow,
     state,
-    preGlobalFilteredRows,
     setGlobalFilter,
   } = useTable(
     {
-      columns,
-      data,
+      columns: props.columns,
+      data: props.data,
     },
     useGlobalFilter,
     useSortBy
-  )
+  ) as any;
 
   return (
     <>
       <GlobalFilter
-        preGlobalFilteredRows={preGlobalFilteredRows}
         globalFilter={state.globalFilter}
         setGlobalFilter={setGlobalFilter}
       />
 
       <table {...getTableProps()}>
         <thead>
-          {headerGroups.map(headerGroup => (
+          {headerGroups.map((headerGroup: any) => (
             <tr {...headerGroup.getHeaderGroupProps()}>
-              {headerGroup.headers.map(column => (
+              {headerGroup.headers.map((column: any) => (
                 <th {...column.getHeaderProps(column.getSortByToggleProps())}>
                   {column.render('Header')}
                   <span>
@@ -74,13 +53,13 @@ function Table({ columns, data }) {
           ))}
         </thead>
         <tbody {...getTableBodyProps()}>
-          {rows.map((row, i) => {
+          {rows.map((row: any, rowIndex: number) => {
             prepareRow(row)
             return (
               <tr {...row.getRowProps()}>
-                {row.cells.map((cell, j) => {
+                {row.cells.map((cell: any, columnIndex: number) => {
                   let contents = cell.render('Cell');
-                  if (j === 1) {
+                  if (columnIndex === 1) {
                     if (cell.value.startsWith('http://') || cell.value.startsWith('https://')) {
                       // Link to value directly
                       contents = <a href={cell.value}>{cell.value}</a>

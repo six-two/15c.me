@@ -8,7 +8,7 @@ import Table from './Table';
 // make clicking a shortcut copy its url into your clipboard
 // -----------------------------------------------------------------
 
-interface ShortcutData {
+export interface ShortcutData {
   name: string,
   url: string,
 }
