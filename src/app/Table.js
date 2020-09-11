@@ -79,7 +79,17 @@ function Table({ columns, data }) {
             return (
               <tr {...row.getRowProps()}>
                 {row.cells.map((cell, j) => {
-                  const contents = (j === 1)? <a href={cell.value}>{cell.value}</a> : cell.render('Cell');
+                  let contents = cell.render('Cell');
+                  if (j === 1) {
+                    if (cell.value.startsWith('http://') || cell.value.startsWith('https://')) {
+                      // Link to value directly
+                      contents = <a href={cell.value}>{cell.value}</a>
+                    } else {
+                      // Might need spacial handling (like for 'crypto|'-links), so link to the shortcut
+                      const shortcut = '/' + row.cells[0].value
+                      contents = <a href={shortcut}>{cell.value}</a>
+                    }
+                  }
                   return <td {...cell.getCellProps()}>{contents}</td>
                 })}
               </tr>
