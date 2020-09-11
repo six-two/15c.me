@@ -3,7 +3,7 @@ import '../css/main.scss';
 import Table from './Table';
 
 // --------------------------- TODOs -------------------------------
-// Make it look good, fix overflow on phone
+// Fix overflow on phone
 // Explain usage
 // make clicking a shortcut copy its url into your clipboard
 // -----------------------------------------------------------------
