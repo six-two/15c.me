@@ -25,6 +25,9 @@
 				return await response.json();
 			} catch (error) {
 				console.error(`Failed to fetch "${url}"`, error);
+				output = document.getElementById('output');
+				text = document.createTextNode(`Failed to load "${url}". See console for more infos.`);
+				output.appendChild(text);
 				return {}
 			}
 		}
@@ -37,54 +40,59 @@
 			location.href = url;
 		}
 
-		let path = location.pathname.slice(1);
-		console.log(`Shortcut name: '${path}'`);
-		fetchShortcutData('https://15c.me/sc.json').then(json => {
-			let data = json[path];
-			console.log(`Shortcut URL: '${data}'`);
+		const decryptAndRedirect = (data) => {
+			originalData = data.slice(7);
+			originalData = originalData.replace(/\'/g, '"');
 
+			for (let i = 0; i < 3; i++) {
+				password = prompt('A password is required for this link');
+				if (password) {
+					try {
+						const url = sjcl.decrypt(password, originalData);
+						console.log('Decrypted:', url);
+						redirectTo(url);
+						return;
+					} catch (error) {
+						console.error('Decrypt failed:', error);
+					}
+				} else {
+					// Exit quietly, user had empty password or pressed cancel
+					return;
+				}
+			}
+			alert('Too many wrong attempts!');
+		}
+
+		const handleRedirect = (data) => {
 			if (data) {
 				if (data.startsWith('crypto|')) {
-					doAfterLoadingSCLJ(() => {
-						console.log('Done loading the SJCL library');
-						originalData = data.slice(7);
-						originalData = originalData.replace(/\'/g, '"');
-						console.log(originalData)
-
-						for (let i = 0; i < 3; i++) {
-							password = prompt('A password is required for this link');
-							if (password) {
-								try {
-									const url = sjcl.decrypt(password, originalData);
-									console.log('Decrypted:', url);
-									redirectTo(url);
-									return;
-								} catch (error) {
-									console.error('Decrypt failed:', error)
-								}
-							} else {
-								// Exit quietly, user had empty password or pressed cancel
-								return;
-							}
-						}
-						alert('Too many wrong attempts!')
-					});
+					doAfterLoadingSCLJ(decryptAndRedirect);
 				} else {
 					redirectTo(data);
 				}
-				// document.write(`Redirecting to ${data}`);
-				// location.href = data;
 			} else {
 				if (path) {
 					// 404.html
-					document.write('<h1>Shortcut does not exist</h1>');
-					document.write('Click <a href="/view/">here</a> for a list of valid shortcuts');
+					output = document.getElementById('output');
+					div = document.createElement('div');
+					div.innerHTML = `<h2>Shortcut does not exist</h2>
+									Click <a href="/view/">here</a> for a list of valid shortcuts`;
+					output.appendChild(div);
 				} else {
 					// index.html
 					location.href = '/view/';
 				}
 			}
-		})
+		}
+
+		let path = location.pathname.slice(1);
+		console.log(`Shortcut name: '${path}'`);
+		fetchShortcutData('https://15c.me/sc.json').then(json => {
+			let data = json[path];
+			console.log(`Shortcut data: '${data}'`);
+
+			handleRedirect(data);
+		});
 	</script>
 </body>
 </html>
