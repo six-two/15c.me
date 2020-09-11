@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Generate encrypted shortcut</title>    
+    </head>
+    <body>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/sjcl/1.0.8/sjcl.min.js" integrity="sha512-s0r9TyYSs5CusSDL5s/QEZQZ4DNYLDXx0S+imS+SHR9mw0Yd0Z5KNS9dw7levSp7GpjOZu/bndds3FEDrKd8dg==" crossorigin="anonymous"></script>
+        <script>
+            const pwd = prompt('Password', 'asdf');
+            const cleartext = prompt('URL', 'https://duckduckgo.com');
+            const encrypted = sjcl.encrypt(pwd, cleartext);
+            // dont use base64, since it requires more space
+			// use single quotes to prevent ugly escaping of quotes (which also takes space)
+            const useThisValue = 'crypto|' + encrypted.toString().replace(/\"/g, '\'');
+            document.write('<h3>Put the following line as value for your shortcut</h3>')
+            document.write(useThisValue)
+        </script>
+    </body>
+</html>

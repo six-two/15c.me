@@ -6,6 +6,18 @@
 </head>
 <body>
 	<script type="text/javascript">
+		const doAfterLoadingSCLJ = (onload) => {
+			const scriptTag = document.createElement('script');
+			scriptTag.src = 'https://cdnjs.cloudflare.com/ajax/libs/sjcl/1.0.8/sjcl.min.js';
+			scriptTag.integrity = 'sha512-s0r9TyYSs5CusSDL5s/QEZQZ4DNYLDXx0S+imS+SHR9mw0Yd0Z5KNS9dw7levSp7GpjOZu/bndds3FEDrKd8dg=='
+			scriptTag.crossOrigin = 'anonymous';
+
+			scriptTag.onload = onload;
+			scriptTag.onreadystatechange = onload;
+
+			document.head.appendChild(scriptTag);
+		};
+
 		async function fetchShortcutData(url) {
 			try {
 				const response = await fetch(url);
@@ -19,11 +31,37 @@
 		let path = location.pathname.slice(1);
 		console.log(`Shortcut name: '${path}'`);
 		fetchShortcutData('https://15c.me/sc.json').then(json => {
-			let url = json[path];
-			console.log(`Shortcut URL: '${url}'`);
-			if (url) {
-				document.write(`Redirecting to ${url}`);
-				location.href = url;
+			let data = json[path];
+			console.log(`Shortcut URL: '${data}'`);
+			if (data) {
+				let url = data;
+				if (data.startsWith('crypto|')) {
+					doAfterLoadingSCLJ(() => {
+						console.log('Done loading the SJCL library');
+						originalData = data.slice(7);
+						originalData = originalData.replace(/\'/g, '"');
+						console.log(originalData)
+
+						for (let i = 0; i < 3; i++) {
+							password = prompt('A password is required for this link');
+							if (password) {
+								try {
+									url = sjcl.decrypt(password, originalData);
+									console.log('Decrypted:', url);
+									return;
+								} catch (error) {
+									console.error('Decrypt failed:', error)
+								}
+							} else {
+								// Exit quietly, user had empty password or pressed cancel
+								return;
+							}
+						}
+						alert('Too many wrong attempts!')
+					});
+				}
+				// document.write(`Redirecting to ${data}`);
+				// location.href = data;
 			} else {
 				if (path) {
 					// 404.html
