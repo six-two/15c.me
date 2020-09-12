@@ -13,6 +13,8 @@ export interface ShortcutData {
   url: string,
 }
 
+const SHORTCUT_URL = 'https://15c.me/sc.json';
+
 const columns = [
   {
     Header: 'Shortcut Name',
@@ -44,7 +46,7 @@ export default function App() {
  
   useEffect(() => {
     const fetchData = async () => {
-      const data = await fetchShortcutData('https://15c.me/sc.json');
+      const data = await fetchShortcutData(SHORTCUT_URL);
       setData(data);
     };
  
