@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import {
   BrowserRouter as Router,
   Switch,
@@ -18,29 +18,31 @@ import '../css/main.scss';
 
 export default function App() {
   return (
-    <Router>
+    <Router basename="/view">
       <div>
-        <nav>
+        <nav className="app-nav">
           <ul>
             <li>
-              <Link to="/">Shortcuts</Link>
+              <Link to={"/"}>Shortcuts</Link>
             </li>
             <li>
-              <Link to="/encrypt">Encrypt a link</Link>
+              <Link to={"/encrypt"}>Encrypt a link</Link>
             </li>
           </ul>
         </nav>
 
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
-        <Switch>
-          <Route path="/encrypt">
-            <EncryptLink />
-          </Route>
-          <Route path="/">
-            <ShortcutPage />
-          </Route>
-        </Switch>
+        <div className="app-page">
+          <Switch>
+            <Route path="/encrypt">
+              <EncryptLink />
+            </Route>
+            <Route path="/">
+              <ShortcutPage />
+            </Route>
+          </Switch>
+        </div>
       </div>
     </Router>
   )

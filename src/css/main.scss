@@ -1,8 +1,11 @@
 @import "filter";
 @import "shortcut_table";
 @import "encrypt";
+@import "navigation_bar";
 
 #root {
-    padding   : 1rem;
-    box-sizing: border-box;
+    .app-page {
+        padding   : 1rem;
+        box-sizing: border-box;
+    }
 }
