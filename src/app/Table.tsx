@@ -1,7 +1,7 @@
 import React from 'react';
 import { useTable, useGlobalFilter, useSortBy, Cell } from 'react-table';
 import GlobalFilter from './Search';
-import {ShortcutData} from './App';
+import {ShortcutData} from './ShortcutPage';
 
 interface Props {
   columns: any[],
@@ -53,7 +53,7 @@ export default function Table(props: Props) {
       setGlobalFilter={(table as any).setGlobalFilter}
     />
 
-    <table {...table.getTableProps()}>
+    <table className="my-table" {...table.getTableProps()}>
       <thead>
         {table.headerGroups.map((headerGroup) => (
           <tr {...headerGroup.getHeaderGroupProps()}>

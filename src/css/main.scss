@@ -1,74 +1,8 @@
-$big-screen: "only screen and (min-width: 768px)";
-$medium-screen: "only screen and (min-width: 500px)";
+@import "filter";
+@import "shortcut_table";
+@import "encrypt";
 
 #root {
-  background: eee;
-
-  .my-table {
-    padding: 1rem;
-    
-    table {
-      border-collapse: collapse;
-      width: 100%;
-      box-sizing: border-box;
-      border-color: #444;
-
-      td, th {
-        border: 1px solid #ddd;
-        padding: 8px;
-      }
-
-      tr {
-        &:nth-child(even){
-          background-color: #eee;
-        }
-  
-        &:nth-child(odd){
-          background-color: #ccc;
-        }
-
-        a, & {
-          color: #222;
-        }
-
-        &:hover {
-          background-color: #666;
-          a, & {
-            color: #ddd;
-          }
-        }
-      }
-            
-      th {
-        padding-top: 12px;
-        padding-bottom: 12px;
-        text-align: left;
-        background-color: #444;
-
-        a, & {
-          color: #ddd;
-        }
-      }
-    }
-  }
-
-  .table-filter {
-    display: flex;
-    border: 1px solid black;
-    margin: 0px auto 20px auto;
-    width: 300px;
-    background-color: #ddd;
-    color: #444;
-    padding: 10px;
-    border-radius: 10px;
-
-    input {
-      flex: 1;
-      font-size: '1.1rem';
-      border: 0;
-      color: #000;
-      background-color: #00000000;
-      margin-left: 5px;
-    }
-  }
+    padding   : 1rem;
+    box-sizing: border-box;
 }

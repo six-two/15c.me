@@ -1,0 +1,31 @@
+.encrypt-link {
+    display        : table;
+    border-collapse: collapse;
+    width          : 100%;
+    box-sizing     : border-box;
+
+    .text-field,
+    .output {
+        display: table-row;
+
+        .label,
+        .value {
+            display: table-cell;
+            border : 1px solid #444;
+            padding: 5px;
+        }
+
+        .wrapper {
+            display: flex;
+
+            input {
+                min-width: 10px;
+                flex     : 1;
+            }
+        }
+    }
+
+    .output .value {
+        word-break: break-all;
+    }
+}

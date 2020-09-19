@@ -1,6 +1,13 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+import EncryptLink from './EncryptLink';
+import ShortcutPage from './ShortcutPage';
 import '../css/main.scss';
-import Table from './Table';
 
 // --------------------------- TODOs -------------------------------
 // Fix overflow on phone
@@ -8,54 +15,33 @@ import Table from './Table';
 // make clicking a shortcut copy its url into your clipboard
 // -----------------------------------------------------------------
 
-export interface ShortcutData {
-  name: string,
-  url: string,
-}
-
-const SHORTCUT_URL = 'https://15c.me/sc.json';
-
-const columns = [
-  {
-    Header: 'Shortcut Name',
-    accessor: 'name',
-  },
-  {
-    Header: 'Redirect URL',
-    accessor: 'url',
-  },
-];
-
-async function fetchShortcutData(url: string): Promise<ShortcutData[]> {
-  try {
-    const response = await fetch(url);
-    const json = await response.json();
-    const data = [];
-    for (let name of Object.keys(json)) {
-      data.push({name, url: json[name]});
-    }
-    return data;
-  } catch (error) {
-    console.error(`Failed to fetch "${url}"`, error);
-    return [{name: 'ERROR', url: 'Failed to fetch the shortcut file'}];
-  }
-}
 
 export default function App() {
-  const [data, setData] = useState<ShortcutData[]>([{name: 'INFO', url: 'Loading data...'}]);
- 
-  useEffect(() => {
-    const fetchData = async () => {
-      const data = await fetchShortcutData(SHORTCUT_URL);
-      setData(data);
-    };
- 
-    fetchData();
-  }, []);
-
   return (
-    <div className="my-table">
-      <Table columns={columns} data={data} />
-    </div>
+    <Router>
+      <div>
+        <nav>
+          <ul>
+            <li>
+              <Link to="/">Shortcuts</Link>
+            </li>
+            <li>
+              <Link to="/encrypt">Encrypt a link</Link>
+            </li>
+          </ul>
+        </nav>
+
+        {/* A <Switch> looks through its children <Route>s and
+            renders the first one that matches the current URL. */}
+        <Switch>
+          <Route path="/encrypt">
+            <EncryptLink />
+          </Route>
+          <Route path="/">
+            <ShortcutPage />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
   )
 }
