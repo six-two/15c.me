@@ -10,8 +10,8 @@ import ShortcutPage from './ShortcutPage';
 import '../css/main.scss';
 
 // --------------------------- TODOs -------------------------------
-// Explain usage
-// make clicking a shortcut copy its url into your clipboard
+// Explain usage (make a nice readme)
+// Gater all variables in a single file
 // -----------------------------------------------------------------
 
 

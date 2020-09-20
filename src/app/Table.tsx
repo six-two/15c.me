@@ -1,7 +1,10 @@
 import React from 'react';
 import { useTable, useGlobalFilter, useSortBy, Cell } from 'react-table';
+import CopyText from './CopyText';
 import GlobalFilter from './Search';
-import {ShortcutData} from './ShortcutPage';
+import { ShortcutData } from './ShortcutPage';
+
+const BASE_URL = 'https://15c.me/';
 
 interface Props {
   columns: any[],
@@ -19,8 +22,14 @@ const renderSortArrow = (column: any) => {
 const renderCell = (cell: Cell<ShortcutData, any>, columnIndex: number) => {
   let contents;
   let className;
-  if (columnIndex === 1) {
-    const value = cell.value as string;
+  const value = cell.value as string;
+
+  if (columnIndex === 0) {
+    const url = BASE_URL + value;
+    contents = <CopyText
+      text={value}
+      toCopy={url} />
+  } else if (columnIndex === 1) {
     className = "shortcut-url"
     if (value.startsWith('http://') || value.startsWith('https://')) {
       // Link to value directly
