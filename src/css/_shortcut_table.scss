@@ -24,6 +24,11 @@
             color: #222;
         }
 
+        .shortcut-url {
+            // Allow the link to be wrapped to prevent overflow issue
+            word-break: break-all;
+        }
+
         &:hover {
             background-color: #666;
 

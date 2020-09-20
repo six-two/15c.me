@@ -18,8 +18,10 @@ const renderSortArrow = (column: any) => {
 
 const renderCell = (cell: Cell<ShortcutData, any>, columnIndex: number) => {
   let contents;
+  let className;
   if (columnIndex === 1) {
     const value = cell.value as string;
+    className = "shortcut-url"
     if (value.startsWith('http://') || value.startsWith('https://')) {
       // Link to value directly
       contents = <a href={value}>{value}</a>;
@@ -32,7 +34,7 @@ const renderCell = (cell: Cell<ShortcutData, any>, columnIndex: number) => {
     contents = cell.render('Cell');
   }
 
-  return <td {...cell.getCellProps()}>
+  return <td className={className} {...cell.getCellProps()}>
     {contents}
   </td>;
 }

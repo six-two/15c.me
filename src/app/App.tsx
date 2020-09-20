@@ -10,7 +10,6 @@ import ShortcutPage from './ShortcutPage';
 import '../css/main.scss';
 
 // --------------------------- TODOs -------------------------------
-// Fix overflow on phone
 // Explain usage
 // make clicking a shortcut copy its url into your clipboard
 // -----------------------------------------------------------------
