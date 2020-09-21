@@ -1,7 +1,6 @@
 import React from 'react';
-import { useTable, useGlobalFilter, useSortBy, Cell, Row } from 'react-table';
+import { Row } from 'react-table';
 import CopyText from './CopyText';
-import GlobalFilter from './Search';
 import { ShortcutData } from './ShortcutPage';
 import * as C from './Config';
 

@@ -1,10 +1,8 @@
 import React from 'react';
-import { useTable, useGlobalFilter, useSortBy, Cell } from 'react-table';
-import CopyText from './CopyText';
+import { useTable, useGlobalFilter, useSortBy } from 'react-table';
 import GlobalFilter from './Search';
 import TableRow from './TableRow';
 import { ShortcutData } from './ShortcutPage';
-import * as C from './Config';
 
 
 interface Props {
@@ -18,38 +16,6 @@ const renderSortArrow = (column: any) => {
   } else {
     return null;
   }
-}
-
-const renderCell = (cell: Cell<ShortcutData, any>, columnIndex: number) => {
-  let contents;
-  let className;
-  const value = cell.value as string;
-  const shortcutUrl = C.REDIRECT_BASE_URL + '/' + cell.row.cells[0].value;
-
-  if (columnIndex === 0) {
-    contents = <CopyText
-      text={value}
-      toCopy={shortcutUrl} />
-  } else if (columnIndex === 1) {
-    className = "shortcut-url";
-    if (value.startsWith('http://') || value.startsWith('https://')) {
-      // Link to value directly
-      contents = <a href={value}>
-        {value}
-      </a>
-    } else {
-      // Might need special handling (like for 'crypto|'-links), so link to the shortcut
-      contents = <a href={shortcutUrl}>
-        {value}
-      </a>
-    }
-  } else {
-    contents = cell.render('Cell');
-  }
-
-  return <td className={className} {...cell.getCellProps()}>
-    {contents}
-  </td>;
 }
 
 export default function Table(props: Props) {
