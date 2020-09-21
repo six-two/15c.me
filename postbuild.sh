@@ -1,13 +1,20 @@
 #!/usr/bin/bash
 pwd
 
+# Config options
 APP_PATH='shortcuts'
 
-rm -f tmp;
-mv build tmp;
-mkdir build;
+# Make sure the tmp dir does not exist
+rm -f tmp
+
+# Move /build to /build/${APP_PATH}
+mv build tmp
+mkdir build
 mv tmp build/${APP_PATH}
 
-mv build/${APP_PATH}/root/* build
-rm -r build/${APP_PATH}/root
+# Move some files in the root directory
+mv build/${APP_PATH}/sc.json build/
+mv build/${APP_PATH}/404.html build/
+
+# Use 404.html as index.html too
 cp build/404.html build/index.html

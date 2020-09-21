@@ -10,8 +10,9 @@
 		"use strict";
 
 		// Configuration options
-		// They have to mirror the ones used by the react app
-		const app_path = '/shortcuts'
+		// They have to mirror the ones used by the react app, and the postbuild script
+		const APP_PATH = '/shortcuts';
+		const SHORTCUT_FILE_URL = 'https://15c.me/sc.json';
 
 
 		const doAfterLoadingSCLJ = (onload) => {
@@ -83,18 +84,18 @@
 					let output = document.getElementById('output');
 					let div = document.createElement('div');
 					div.innerHTML = `<h2>Shortcut does not exist</h2>
-									Click <a href="${app_path}">here</a> for a list of valid shortcuts`;
+									Click <a href="${APP_PATH}">here</a> for a list of valid shortcuts`;
 					output.appendChild(div);
 				} else {
 					// index.html
-					location.href = app_path;
+					location.href = APP_PATH;
 				}
 			}
 		}
 
 		let path = location.pathname.slice(1);
 		console.log(`Shortcut name: '${path}'`);
-		fetchShortcutData('https://15c.me/sc.json').then(json => {
+		fetchShortcutData(SHORTCUT_FILE_URL).then(json => {
 			let data = json[path];
 			console.log(`Shortcut data: '${data}'`);
 
