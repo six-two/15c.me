@@ -1,13 +1,13 @@
 #!/usr/bin/bash
 pwd
 
-# Move /build to /build/edit
-rm tmp;
+APP_PATH='shortcuts'
+
+rm -f tmp;
 mv build tmp;
 mkdir build;
-mv tmp build/view
+mv tmp build/${APP_PATH}
 
-# move /build/view/root/* to /build/*
-mv build/view/root/* build
-rm -r build/view/root
+mv build/${APP_PATH}/root/* build
+rm -r build/${APP_PATH}/root
 cp build/404.html build/index.html

@@ -9,6 +9,11 @@
 	<script type="text/javascript">
 		"use strict";
 
+		// Configuration options
+		// They have to mirror the ones used by the react app
+		const app_path = '/shortcuts'
+
+
 		const doAfterLoadingSCLJ = (onload) => {
 			const scriptTag = document.createElement('script');
 			scriptTag.src = 'https://cdnjs.cloudflare.com/ajax/libs/sjcl/1.0.8/sjcl.min.js';
@@ -73,7 +78,6 @@
 					redirectTo(data);
 				}
 			} else {
-				const app_path = '/shortcuts'
 				if (path) {
 					// 404.html
 					let output = document.getElementById('output');
