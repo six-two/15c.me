@@ -7,17 +7,17 @@ import {
 } from "react-router-dom";
 import EncryptLink from './EncryptLink';
 import ShortcutPage from './ShortcutPage';
+import * as C from './Config';
 import '../css/main.scss';
 
 // --------------------------- TODOs -------------------------------
 // Explain usage (make a nice readme)
-// Gater all variables in a single file
 // -----------------------------------------------------------------
 
 
 export default function App() {
   return (
-    <Router basename="/view">
+    <Router basename={C.APP_BASE_URL}>
       <div>
         <nav className="app-nav">
           <ul>
@@ -25,7 +25,7 @@ export default function App() {
               <Link to={"/"}>Shortcuts</Link>
             </li>
             <li>
-              <Link to={"/encrypt"}>Encrypt a link</Link>
+              <Link to={C.ENCRYPT_PAGE_URL}>Encrypt a link</Link>
             </li>
           </ul>
         </nav>
@@ -34,7 +34,7 @@ export default function App() {
             renders the first one that matches the current URL. */}
         <div className="app-page">
           <Switch>
-            <Route path="/encrypt">
+            <Route path={C.ENCRYPT_PAGE_URL}>
               <EncryptLink />
             </Route>
             <Route path="/">

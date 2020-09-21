@@ -73,16 +73,17 @@
 					redirectTo(data);
 				}
 			} else {
+				const app_path = '/shortcuts'
 				if (path) {
 					// 404.html
 					let output = document.getElementById('output');
 					let div = document.createElement('div');
 					div.innerHTML = `<h2>Shortcut does not exist</h2>
-									Click <a href="/view/">here</a> for a list of valid shortcuts`;
+									Click <a href="${app_path}">here</a> for a list of valid shortcuts`;
 					output.appendChild(div);
 				} else {
 					// index.html
-					location.href = '/view/';
+					location.href = app_path;
 				}
 			}
 		}

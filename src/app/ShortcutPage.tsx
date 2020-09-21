@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import Table from './Table';
+import * as C from './Config';
+
 
 export interface ShortcutData {
     name: string,
     url: string,
 }
-
-const SHORTCUT_URL = 'https://15c.me/sc.json';
 
 const columns = [
     {
@@ -39,16 +39,12 @@ export default function ShortcutPage() {
 
     useEffect(() => {
         const fetchData = async () => {
-            const data = await fetchShortcutData(SHORTCUT_URL);
+            const data = await fetchShortcutData(C.SHORTCUT_FILE_URL);
             setData(data);
         };
 
         fetchData();
     }, []);
 
-    return (
-        <div className="my-table">
-            <Table columns={columns} data={data} />
-        </div>
-    )
+    return <Table columns={columns} data={data} />
 }

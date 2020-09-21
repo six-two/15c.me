@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import CopyToClipboard from 'react-copy-to-clipboard';
 import TimeoutComponent from './TimeoutComponent';
+import * as C from './Config';
+
 
 interface Props {
     text: string,
@@ -9,7 +11,7 @@ interface Props {
 
 export default function CopyText(props: Props) {
     const toCopy = props.toCopy || props.text;
-    const [isCopied, setCopied] = useState(false);
+    const [showToast, setShowToast] = useState(false);
 
     return <div className="copy-text">
         <div className="text">
@@ -18,15 +20,15 @@ export default function CopyText(props: Props) {
         <div className="button">
             <CopyToClipboard
                 text={toCopy}
-                onCopy={() => setCopied(true)}>
+                onCopy={() => setShowToast(true)}>
                 <button>Copy</button>
             </CopyToClipboard>
         </div>
-        {isCopied &&
+        {showToast &&
             <div className="toast">
                 <TimeoutComponent
-                    onComplete={() => setCopied(false)}
-                    timeoutSeconds={3} />
+                    onComplete={() => setShowToast(false)}
+                    timeoutSeconds={C.TOAST_TIMEOUT} />
                 URL copied
             </div>
         }
