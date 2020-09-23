@@ -25,14 +25,21 @@ function TextField(props: TextFieldProps) {
 
 
 export default function EncryptLink() {
-    const [password, setPassword] = useState('password');
+    const [password, setPassword] = useState('monkey123');
     const [url, setUrl] = useState('https://example.com');
+    const trimmedUrl = url.trim();
 
-    const encrypted = encrypt(password, url);
-    // dont use base64, since it requires more space
-    // use single quotes to prevent ugly escaping of quotes (which also takes space)
-    const useThisValue = 'crypto|' + encrypted.toString().replace(/"/g, '\'');
-
+    let useThisValue;
+    if (!password) {
+        useThisValue = 'ERROR: Password can not be empty';
+    } else if (!trimmedUrl) {
+        useThisValue = 'ERROR: URL can not be empty';
+    } else {
+        const encrypted = encrypt(password, trimmedUrl);
+        // dont use base64, since it requires more space
+        // use single quotes to prevent ugly escaping of quotes (which also takes space)
+        useThisValue = 'crypto|' + encrypted.toString().replace(/"/g, '\'');
+    }
 
     return (
         <div className="encrypt-link">
