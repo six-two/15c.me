@@ -4,17 +4,17 @@ import * as C from './Config';
 
 
 export interface ShortcutData {
-    name: string,
+    shortcuts: string[],
     url: string,
 }
 
 const columns = [
     {
-        Header: 'Shortcut Name',
-        accessor: 'name',
+        Header: 'Shortcut(s)',
+        accessor: 'shortcuts',
     },
     {
-        Header: 'Redirect URL',
+        Header: 'Destination URL',
         accessor: 'url',
     },
 ];
@@ -24,18 +24,24 @@ async function fetchShortcutData(url: string): Promise<ShortcutData[]> {
         const response = await fetch(url);
         const json = await response.json();
         const data = [];
-        for (let name of Object.keys(json)) {
-            data.push({ name, url: json[name] });
+        for (const key of Object.keys(json)) {
+            let values = json[key];
+            if (!Array.isArray(values)) {
+                values = [values];
+            }
+            data.push({ shortcuts: values, url: key });
         }
         return data;
     } catch (error) {
         console.error(`Failed to fetch "${url}"`, error);
-        return [{ name: 'ERROR', url: 'Failed to fetch the shortcut file' }];
+        return [{ shortcuts: ['ERROR'], url: 'Failed to fetch the shortcut file' }];
     }
 }
 
 export default function ShortcutPage() {
-    const [data, setData] = useState<ShortcutData[]>([{ name: 'INFO', url: 'Loading data...' }]);
+    const [data, setData] = useState<ShortcutData[]>([
+        { shortcuts: ['INFO'], url: 'Loading data...' }
+    ]);
 
     useEffect(() => {
         const fetchData = async () => {

@@ -1,22 +1,20 @@
 {
-    "p": "https://projects.six-two.dev",
-    "me": "https://six-two.dev",
-    "mail": "mailto:info@six-two.dev",
-    "kali": "https://projects.six-two.dev/react_fake_kali_login/",
-    "dstt": "https://projects.six-two.dev/react_did_someone_touch_this/",
-    "w10": "https://projects.six-two.dev/react_fake_win10_login/",
-    "pt": "https://projects.six-two.dev/react_scare_phone_thief/",
-    "nz": "https://thisnamesistaken.wordpress.com",
-    "nzp": "https://projects.six-two.dev/photo_links/",
-    "loop": "/eggs_are_good_for_you#this_will_trap_your_device_in_a_redirect_loop",
-    "eggs_are_good_for_you": "eggs_are_bad_for_you",
+    "https://six-two.dev": "me",
+    "mailto:info@six-two.dev": "mail",
+    "https://paypal.me/PatrickSchlueter": ["pp", "paypal"],
+    "https://github.com/six-two/": ["gh", "github"],
+    "https://gitlab.com/six-two": ["gl", "gitlab"],
+
+    "https://projects.six-two.dev": ["p", "projects"],
+    "https://projects.six-two.dev/react_fake_kali_login/": "kali",
+    "https://projects.six-two.dev/react_did_someone_touch_this/": "dstt",
+    "https://projects.six-two.dev/react_fake_win10_login/": "w10",
+    "https://projects.six-two.dev/react_scare_phone_thief/": "spt",
+
+    "https://thisnamesistaken.wordpress.com": "nz",
+    "https://projects.six-two.dev/photo_links/": "nzp",
+
+    "eggs_are_good_for_you": ["loop", "eggs_are_bad_for_you"],
     "eggs_are_bad_for_you": "eggs_are_good_for_you",
-    "pp": "/paypal",
-    "paypal": "https://paypal.me/PatrickSchlueter",
-    "gh": "/github",
-    "github": "https://github.com/six-two/",
-    "gl": "/gitlab",
-    "gitlab": "https://gitlab.com/six-two",
-    "test_crypto": "crypto|{'iv':'QSj5UVMPNbGq0lRQfqi9HA==','v':1,'iter':10000,'ks':128,'ts':64,'mode':'ccm','adata':'','cipher':'aes','salt':'EybHraSzVXY=','ct':'iFYkUdlRscamZI8z0avu/16/Q+RyvB+9u5vppH07'}",
-    "test_crypto_password": "asdf"
+    "crypto|{'iv':'QSj5UVMPNbGq0lRQfqi9HA==','v':1,'iter':10000,'ks':128,'ts':64,'mode':'ccm','adata':'','cipher':'aes','salt':'EybHraSzVXY=','ct':'iFYkUdlRscamZI8z0avu/16/Q+RyvB+9u5vppH07'}": ["password_asdf"]
 }

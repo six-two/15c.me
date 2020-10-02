@@ -14,22 +14,20 @@ export default function CopyText(props: Props) {
     const [showToast, setShowToast] = useState(false);
 
     return <div className="copy-text">
-        <div className="text">
-            {props.text}
-        </div>
-        <div className="button">
-            <CopyToClipboard
-                text={toCopy}
-                onCopy={() => setShowToast(true)}>
-                <button>Copy</button>
-            </CopyToClipboard>
-        </div>
+        <CopyToClipboard
+            text={toCopy}
+            onCopy={() => setShowToast(true)}>
+            <span className="text">
+                {props.text}
+            </span>
+        </CopyToClipboard>
+
         {showToast &&
             <div className="toast">
                 <TimeoutComponent
                     onComplete={() => setShowToast(false)}
                     timeoutSeconds={C.TOAST_TIMEOUT} />
-                URL copied
+                Copied: {props.toCopy}
             </div>
         }
     </div>

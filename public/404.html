@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
 	<title>Redirect link</title>
 </head>
+
 <body>
 	<div id="output"></div>
 	<script type="text/javascript">
@@ -30,7 +32,22 @@
 		async function fetchShortcutData(url) {
 			try {
 				const response = await fetch(url);
-				return await response.json();
+				const json = await response.json();
+				console.debug("Loaded JSON", json);
+
+				// Map from {'destinationUrl': ['shortcut', 'alias(es)']}
+				// to {'shortcut': 'destinationUrl', 'alias(es': 'destinationUrl'}
+				const shortcuts = {};
+				for (let [dstUrl, sc_list] of Object.entries(json)) {
+					if (!Array.isArray(sc_list)) {
+						sc_list = [sc_list];
+					}
+					for (const sc of sc_list) {
+						shortcuts[sc] = dstUrl;
+					}
+				}
+				console.debug("Shortcut map", shortcuts);
+				return shortcuts;
 			} catch (error) {
 				console.error(`Failed to fetch "${url}"`, error);
 				let output = document.getElementById('output');
@@ -44,7 +61,7 @@
 			let output = document.getElementById('output');
 			let text = document.createTextNode(`Redirecting to ${url}`);
 			output.appendChild(text);
- 
+
 			location.href = url;
 		}
 
@@ -93,14 +110,15 @@
 			}
 		}
 
-		let path = location.pathname.slice(1);
+		const path = location.pathname.slice(1);
 		console.log(`Shortcut name: '${path}'`);
 		fetchShortcutData(SHORTCUT_FILE_URL).then(json => {
-			let data = json[path];
+			const data = json[path];
 			console.log(`Shortcut data: '${data}'`);
 
 			handleRedirect(data);
 		});
 	</script>
 </body>
+
 </html>

@@ -11,8 +11,8 @@ interface Props {
 
 export default function TableRow(props: Props) {
     const cells = props.row.cells;
-    const shortcutKey = cells[0].value as string;
-    const shortcutKeyUrl = C.REDIRECT_BASE_URL + '/' + shortcutKey;
+    const shortcutKeys = cells[0].value as string[];
+    const shortcutUrls = shortcutKeys.map(key => C.REDIRECT_BASE_URL + '/' + key);
     const shortcutValue = cells[1].value as string;
     let shortcutValueLink;
     if (shortcutValue.startsWith('http://') || shortcutValue.startsWith('https://')) {
@@ -20,14 +20,16 @@ export default function TableRow(props: Props) {
         shortcutValueLink = shortcutValue;
     } else {
         // Might need special handling (like for 'crypto|'-links), so link to the shortcut
-        shortcutValueLink = shortcutKeyUrl;
+        shortcutValueLink = shortcutUrls[0];
     }
 
     return <tr {...props.row.getRowProps()}>
         <td {...cells[0].getCellProps()}>
-            <CopyText
-                text={shortcutKey}
-                toCopy={shortcutKeyUrl} />
+            {shortcutKeys.map((text, index) =>
+                <CopyText
+                    text={text}
+                    toCopy={shortcutUrls[index]} />
+            )}
         </td>
         <td className="shortcut-url" {...cells[1].getCellProps()}>
             <a href={shortcutValueLink}>
