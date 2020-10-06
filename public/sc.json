@@ -6,13 +6,13 @@
     "https://gitlab.com/six-two": ["gl", "gitlab"],
 
     "https://projects.six-two.dev": ["p", "projects"],
-    "https://projects.six-two.dev/react_fake_kali_login/": "kali",
-    "https://projects.six-two.dev/react_did_someone_touch_this/": "dstt",
-    "https://projects.six-two.dev/react_fake_win10_login/": "w10",
-    "https://projects.six-two.dev/react_scare_phone_thief/": "spt",
+    "https://kali-login.six-two.dev": "kali",
+    "https://win10-login.six-two.dev": "w10",
+    "https://photos.six-two.dev": ["nzp", "photos"],
+    "https://six-two.github.io/react_did_someone_touch_this/": "dstt",
+    "https://six-two.github.io/react_scare_phone_thief/": "spt",
 
     "https://thisnamesistaken.wordpress.com": "nz",
-    "https://projects.six-two.dev/photo_links/": "nzp",
 
     "eggs_are_good_for_you": ["loop", "eggs_are_bad_for_you"],
     "eggs_are_bad_for_you": "eggs_are_good_for_you",
