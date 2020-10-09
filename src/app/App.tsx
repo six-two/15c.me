@@ -11,6 +11,14 @@ import * as C from './Config';
 import '../css/main.scss';
 
 // --------------------------- TODOs -------------------------------
+// Support categories for the json file and the react app
+//  - put each one in a single table
+//  - hide empty categories
+
+// # Idea: make a script that merges all files (redirect.html, sjcl.js, redirect.js, sc.json)
+// - Download sjcl.js
+// # Bonus points: minimize the resulting file.
+
 // -----------------------------------------------------------------
 
 

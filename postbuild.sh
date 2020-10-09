@@ -14,7 +14,10 @@ mv tmp build/${APP_PATH}
 
 # Move some files in the root directory
 mv build/${APP_PATH}/sc.json build/
-mv build/${APP_PATH}/404.html build/
+mv build/${APP_PATH}/redirect.html build/404.html
+mv build/${APP_PATH}/redirect.js build/
+
 
 # Use 404.html as index.html too
 cp build/404.html build/index.html
+
