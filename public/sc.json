@@ -17,5 +17,8 @@
 
     "eggs_are_good_for_you": ["loop", "eggs_are_bad_for_you"],
     "eggs_are_bad_for_you": "eggs_are_good_for_you",
+
+    "p/split": "test_folders",
+    "p/reveal": "test_folders_2",
     "crypto|{'iv':'QSj5UVMPNbGq0lRQfqi9HA==','v':1,'iter':10000,'ks':128,'ts':64,'mode':'ccm','adata':'','cipher':'aes','salt':'EybHraSzVXY=','ct':'iFYkUdlRscamZI8z0avu/16/Q+RyvB+9u5vppH07'}": ["password_asdf"]
 }
