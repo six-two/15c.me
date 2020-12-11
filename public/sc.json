@@ -4,6 +4,7 @@
     "https://paypal.me/PatrickSchlueter": ["pp", "paypal"],
     "https://github.com/six-two/": ["gh", "github"],
     "https://gitlab.com/six-two": ["gl", "gitlab"],
+    "https://cv.six-two.dev": "cv",
 
     "https://projects.six-two.dev": ["p", "projects"],
     "https://kali-login.six-two.dev": "kali",
