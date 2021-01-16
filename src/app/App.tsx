@@ -28,7 +28,7 @@ import { FormattedMessage } from 'react-intl';
 
 export default function App() {
   return (
-    <ContextLocalizer>
+    <ContextLocalizer handle_url_param={true}>
       <Router basename={C.APP_BASE_URL}>
         <div>
           <nav className="app-nav">

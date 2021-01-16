@@ -10,6 +10,17 @@ interface Props {
 
 export const DEFAULT_LANG = "en";
 
+export const sanitizeLanguage = (lang: string) => {
+  switch (lang) {
+    case "de":
+    case "en":
+      return lang;
+    default:
+      console.warn(`Unknown language: "${lang}"`);
+      return "en";
+  }
+}
+
 const getLangData = (lang: string) => {
   switch (lang) {
     case "de":
