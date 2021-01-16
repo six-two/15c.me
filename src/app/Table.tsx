@@ -36,10 +36,10 @@ export default function Table(props: Props) {
 
     <table className="my-table" {...table.getTableProps()}>
       <thead>
-        {table.headerGroups.map((headerGroup) => (
-          <tr {...headerGroup.getHeaderGroupProps()}>
-            {headerGroup.headers.map((column) => {
-              return <th {...column.getHeaderProps((column as any).getSortByToggleProps())}>
+        {table.headerGroups.map((headerGroup, index) => (
+          <tr {...headerGroup.getHeaderGroupProps()} key={index}>
+            {headerGroup.headers.map((column, index) => {
+              return <th {...column.getHeaderProps((column as any).getSortByToggleProps())} key={index}>
                 {column.render('Header')}
                 {renderSortArrow(column as any)}
               </th>
@@ -48,9 +48,9 @@ export default function Table(props: Props) {
         ))}
       </thead>
       <tbody {...table.getTableBodyProps()}>
-        {table.rows.map(row => {
+        {table.rows.map((row, index) => {
           table.prepareRow(row);
-          return <TableRow row={row} />
+          return <TableRow key={index} row={row} />
         })}
       </tbody>
     </table>

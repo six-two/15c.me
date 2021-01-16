@@ -27,6 +27,7 @@ export default function TableRow(props: Props) {
         <td {...cells[0].getCellProps()}>
             {shortcutKeys.map((text, index) =>
                 <CopyText
+                    key={index}
                     text={text}
                     toCopy={shortcutUrls[index]} />
             )}
