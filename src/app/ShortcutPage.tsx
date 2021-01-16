@@ -1,23 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import Table from './Table';
 import * as C from './Config';
+import { useIntl } from 'react-intl';
 
 
 export interface ShortcutData {
     shortcuts: string[],
     url: string,
 }
-
-const columns = [
-    {
-        Header: 'Shortcut(s)',
-        accessor: 'shortcuts',
-    },
-    {
-        Header: 'Destination URL',
-        accessor: 'url',
-    },
-];
 
 async function fetchShortcutData(url: string): Promise<ShortcutData[]> {
     try {
@@ -42,6 +32,17 @@ export default function ShortcutPage() {
     const [data, setData] = useState<ShortcutData[]>([
         { shortcuts: ['INFO'], url: 'Loading data...' }
     ]);
+    const intl = useIntl();
+    const columns = [
+        {
+            Header: intl.formatMessage({ id: "shortcuts" }),
+            accessor: 'shortcuts',
+        },
+        {
+            Header: intl.formatMessage({ id: "destination_url" }),
+            accessor: 'url',
+        },
+    ];
 
     useEffect(() => {
         const fetchData = async () => {

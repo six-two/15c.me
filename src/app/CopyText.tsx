@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import CopyToClipboard from 'react-copy-to-clipboard';
 import TimeoutComponent from './TimeoutComponent';
 import * as C from './Config';
+import { FormattedMessage } from 'react-intl';
 
 
 interface Props {
@@ -27,7 +28,8 @@ export default function CopyText(props: Props) {
                 <TimeoutComponent
                     onComplete={() => setShowToast(false)}
                     timeoutSeconds={C.TOAST_TIMEOUT} />
-                Copied: {props.toCopy}
+                <FormattedMessage id="copied" />:<br />
+                {props.toCopy}
             </div>
         }
     </div>

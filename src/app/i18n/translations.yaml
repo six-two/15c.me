@@ -1,0 +1,26 @@
+shortcuts:
+  en: Shortcuts
+  de: Kurzlinks
+encrypt_link_page:
+  en: Encrypt a link
+  de: Link verschlüsseln
+destination_url:
+  en: Destination URL
+  de: Zieladresse
+search:
+  en: Search
+  de: Suche
+search_placeholder:
+  en: Click here and type to search
+  de: Klicke hier um einen Link zu suchen
+copied:
+  en: Copied to clipboard
+  de: In Zwischenablage kopiert
+password:
+  en: Password
+  de: Passwort
+url: URL
+encrypted_url:
+  en: Encrypted URL
+  de: Verschlüsselte URL
+error_empty_field: TODO

@@ -18,6 +18,7 @@
     "react": "^17.0.1",
     "react-copy-to-clipboard": "^5.0.2",
     "react-dom": "^17.0.1",
+    "react-intl": "^5.10.16",
     "react-router-dom": "^5.2.0",
     "react-scripts": "^4.0.1",
     "react-table": "^7.6.2",
@@ -26,8 +27,10 @@
     "typescript": "^4.1.2"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "npm run build-json && react-scripts start",
+    "build-json": "pip3 install pyyaml && python3 src/app/i18n/generate_jsons.py",
+    "build-js": "react-scripts build",
+    "build": "npm run build-json && npm run build-js",
     "postbuild": "./postbuild.sh",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
