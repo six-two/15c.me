@@ -5,3 +5,7 @@ menu:
     url: "https://github.com/six-two/15c.me"
   - title: My other projects
     url: "https://projects.six-two.dev/"
+pre_build:
+  - template-tools/i18n/i18n.py <PROJECT>
+post_build:
+  - template-tools/minify.py
