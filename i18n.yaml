@@ -1,9 +1,4 @@
-page-title:
-  en: Shortcuts
-  de: Kurzlinks
-page-nav-source:
-  en: Source code
-  de: Quellcode
-page-nav-projects:
-  en: My other projects
-  de: Meine anderen Projekte
+translations:
+  page-title:
+    en: Shortcuts
+    de: Kurzlinks
