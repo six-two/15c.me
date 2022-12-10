@@ -1,0 +1,54 @@
+{
+  "homepage": "https://15c.me/shortcuts/",
+  "name": "15c_me",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@testing-library/jest-dom": "^5.11.6",
+    "@testing-library/react": "^11.2.2",
+    "@testing-library/user-event": "^12.3.0",
+    "@types/jest": "^26.0.16",
+    "@types/node": "^14.14.10",
+    "@types/react": "^17.0.0",
+    "@types/react-copy-to-clipboard": "^4.3.0",
+    "@types/react-dom": "^17.0.0",
+    "@types/react-router-dom": "^5.1.6",
+    "@types/react-table": "^7.0.25",
+    "@types/sjcl": "^1.0.29",
+    "react": "^17.0.1",
+    "react-copy-to-clipboard": "^5.0.2",
+    "react-dom": "^17.0.1",
+    "react-intl": "^5.10.16",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "^4.0.1",
+    "react-table": "^7.6.2",
+    "sass": "^1.29.0",
+    "sjcl": "^1.0.8",
+    "typescript": "^4.1.2"
+  },
+  "scripts": {
+    "start": "npm run build-json && react-scripts start",
+    "build-json": "pip3 install pyyaml && python3 src/app/i18n/generate_jsons.py",
+    "build-js": "react-scripts build",
+    "build": "npm run build-json && npm run build-js",
+    "postbuild": "./postbuild.sh",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {}
+}

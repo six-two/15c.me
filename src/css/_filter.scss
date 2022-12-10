@@ -1,0 +1,19 @@
+.table-filter {
+    display         : flex;
+    border          : 1px solid black;
+    margin          : 0px auto 20px auto;
+    width           : 300px;
+    background-color: #ddd;
+    color           : #444;
+    padding         : 10px;
+    border-radius   : 10px;
+
+    input {
+        flex            : 1;
+        font-size       : '1.1rem';
+        border          : 0;
+        color           : #000;
+        background-color: #00000000;
+        margin-left     : 5px;
+    }
+}

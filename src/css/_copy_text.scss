@@ -1,0 +1,25 @@
+.copy-text {
+    display       : flex;
+    flex-direction: row;
+
+    .text:hover {
+        text-decoration: underline;
+        cursor: pointer;
+    }
+
+    &:hover .button {
+        display: block;
+    }
+}
+
+.toast {
+    position        : fixed;
+    top             : 20px;
+    right           : 20px;
+    border-radius   : 10px;
+    padding         : 10px;
+    color           : black;
+    background-color: yellow;
+    border          : 2px solid black;
+    font-weight     : bold;
+}

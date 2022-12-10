@@ -1,0 +1,19 @@
+{
+    "https://six-two.dev": "me",
+    "mailto:info@six-two.dev": "mail",
+    "https://github.com/six-two/": ["gh", "github"],
+    "https://gitlab.com/six-two": ["gl", "gitlab"],
+
+    "https://projects.six-two.dev": ["p", "projects"],
+    "https://contact.six-two.dev": ["cf"],
+    "https://kali-login.six-two.dev": "kali",
+    "https://win10-login.six-two.dev": "w10",
+    "https://six-two.github.io/react_did_someone_touch_this/": "dstt",
+
+    "eggs_are_good_for_you": ["loop", "eggs_are_bad_for_you"],
+    "eggs_are_bad_for_you": "eggs_are_good_for_you",
+
+    "https://split.secrets.six-two.dev/": "p/split",
+    "https://reveal.secrets.six-two.dev/": "p/reveal",
+    "crypto|{'iv':'QSj5UVMPNbGq0lRQfqi9HA==','v':1,'iter':10000,'ks':128,'ts':64,'mode':'ccm','adata':'','cipher':'aes','salt':'EybHraSzVXY=','ct':'iFYkUdlRscamZI8z0avu/16/Q+RyvB+9u5vppH07'}": ["password_asdf"]
+}

@@ -1,0 +1,53 @@
+.my-table {
+    border-collapse: collapse;
+    width          : 100%;
+    box-sizing     : border-box;
+    border-color   : #444;
+
+    td,
+    th {
+        border : 1px solid #ddd;
+        padding: 8px;
+    }
+
+    tr {
+        &:nth-child(even) {
+            background-color: #eee;
+        }
+
+        &:nth-child(odd) {
+            background-color: #ccc;
+        }
+
+        a,
+        & {
+            color: #222;
+        }
+
+        .shortcut-url {
+            // Allow the link to be wrapped to prevent overflow issue
+            word-break: break-all;
+        }
+
+        &:hover {
+            background-color: #666;
+
+            a,
+            & {
+                color: #ddd;
+            }
+        }
+    }
+
+    th {
+        padding-top     : 12px;
+        padding-bottom  : 12px;
+        text-align      : left;
+        background-color: #444;
+
+        a,
+        & {
+            color: #ddd;
+        }
+    }
+}
